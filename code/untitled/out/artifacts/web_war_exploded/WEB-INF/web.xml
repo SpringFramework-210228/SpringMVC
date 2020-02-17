@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		  http://java.sun.com/xml/ns/javaee/web-app_4_0.xsd"
+           version="3.0">
+
+
+    <!-- The front controller of this Spring Web application, responsible for handling all application requests -->
+    <servlet>
+        <servlet-name>springDispatcherServlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:spring-mvc.xml</param-value>
+            <!-- 需要修改，指定加载的配置文件路径-->
+        </init-param>
+        <!-- 		启动容器时加载这个sevlet ,值是整数，表示启动容器时加载的顺序
+                大于或等于0 表示容器在启动时就加载并初始化，数字越小，优先级越高
+                小于0或未指定,表示容器在该servlet被请求时，才会被加载
+                值相等时，容器自己选择优先加载
+        -->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <!-- Map all requests to the DispatcherServlet for handling -->
+    <servlet-mapping>
+        <servlet-name>springDispatcherServlet</servlet-name>
+        <url-pattern>/</url-pattern> <!-- 需要修改，指定访问路径-->
+    </servlet-mapping>
+
+</web-app>
